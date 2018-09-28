@@ -9,6 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.pipeline import make_pipeline
 
+import dill as pickle
+
 
 import warnings
 
@@ -102,3 +104,7 @@ grid.fit(X_train, y_train)
 print("Best parameters: {}".format(grid.best_params_))
 
 print("Test set score: {:2f}".format(grid.score(X_test, y_test)))
+
+filename = 'IncomeModel1.pk'
+with open('./data/'+filename, 'wb') as file:
+    pickle.dump(grid, file)
